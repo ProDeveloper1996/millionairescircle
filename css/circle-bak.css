@@ -1,0 +1,98 @@
+.canvas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+}
+.canvas span.cn {
+    position: absolute;
+    padding: 7px 0;
+    border: 1px solid #bfe9ff;
+    min-width: 50px;
+    text-align: center;
+    background: #5792aa;
+    color: #ff0;
+    z-index: 10;
+}
+.canvas span.cn .fa-stack {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    vertical-align: top;
+    margin: -4px 3px 0 0;
+}
+.unit {
+    fill: none;
+    stroke-width: 10;
+}
+.r45{
+    stroke-dasharray: 12.5 100;
+}
+.r45:nth-child(1) {
+    stroke: #f0599a;
+}
+.r45:nth-child(2) {
+    stroke: #12b0f1;
+    stroke-dashoffset: -12.5;
+}
+.r45:nth-child(3) {
+    stroke: #f34423;
+    stroke-dashoffset: -25;
+}
+.r45:nth-child(4) {
+    stroke: #fec134;
+    stroke-dashoffset: -37.5;
+}
+.r45:nth-child(5) {
+    stroke: #7246a0;
+    stroke-dashoffset: -50;
+}
+.r45:nth-child(6) {
+    stroke: #fbef3c;
+    stroke-dashoffset: -62.5;
+}
+.r45:nth-child(7) {
+    stroke: #f34423;
+    stroke-dashoffset: -75;
+}
+.r45:nth-child(8) {
+    stroke: #53b051;
+    stroke-dashoffset: -87.5;
+}
+
+.r90{
+    stroke-dasharray: 25 100;
+}
+.r90:nth-child(1) {
+    stroke: #fec134;
+}
+.r90:nth-child(2) {
+    stroke: #53b051;
+    stroke-dashoffset: -25;
+}
+.r90:nth-child(3) {
+    stroke: #12b0f1;
+    stroke-dashoffset: -50;
+}
+.r90:nth-child(4) {
+    stroke: #f0599a;
+    stroke-dashoffset: -75;
+}
+
+.r180{
+    stroke-dasharray: 50 100;
+}
+.r180:nth-child(1) {
+    stroke: #c4cf1d;
+}
+.r180:nth-child(2) {
+    stroke: #e0a04f;
+    stroke-dashoffset: -50;
+}
+
+.canvas span.cn:empty{
+    display: none;
+}

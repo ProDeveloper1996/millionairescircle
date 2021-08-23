@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Page used to upload new files in the current folder.
+-->
+<html>
+	<head>
+		<title>Загрузка файлов</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+		<link href="browser.css" type="text/css" rel="stylesheet" >
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript">
+
+function SetCurrentFolder( resourceType, folderPath )
+{
+	var sUrl = oConnector.ConnectorUrl + 'Command=FileUpload' ;
+	sUrl += '&Type=' + resourceType ;
+	sUrl += '&CurrentFolder=' + encodeURIComponent( folderPath ) ;
+
+	document.getElementById('frmUpload').action = sUrl ;
+}
+
+function OnSubmit()
+{
+	if ( document.getElementById('NewFile').value.length == 0 )
+	{
+		alert( 'Выберите файл для загрузки на Вашем компьютере' ) ;
+		return false ;
+	}
+
+	// Set the interface elements.
+	document.getElementById('eUploadMessage').innerHTML = 'Загрузка файла в текущую папку (Идёт загрузка, подождите, пожалуйста...)' ;
+	document.getElementById('btnUpload').disabled = true ;
+
+	return true ;
+}
+
+function OnUploadCompleted( errorNumber, data )
+{
+	// Reset the Upload Worker Frame.
+	window.parent.frames['frmUploadWorker'].location = 'javascript:void(0)' ;
+
+	// Reset the upload form (On IE we must do a little trick to avoid problems).
+	if ( document.all )
+		document.getElementById('NewFile').outerHTML = '<input id="NewFile" name="NewFile" style="WIDTH: 100%" type="file">' ;
+	else
+		document.getElementById('frmUpload').reset() ;
+
+	// Reset the interface elements.
+	document.getElementById('eUploadMessage').innerHTML = 'Загрузить файл в текущую папку' ;
+	document.getElementById('btnUpload').disabled = false ;
+
+	switch ( errorNumber )
+	{
+		case 0 :
+			window.parent.frames['frmResourcesList'].Refresh() ;
+			break ;
+		case 1 :	// Custom error.
+			alert( data ) ;
+			break ;
+		case 201 :
+			window.parent.frames['frmResourcesList'].Refresh() ;
+			alert( 'Файл с таким именем уже содержится в данной папке. Загруженный файл был переименован в "' + data + '"' ) ;
+			break ;
+		case 202 :
+			alert( 'Invalid file' ) ;
+			break ;
+		default :
+			alert( 'Ошибка загрузки файла. Номер ошибки: ' + errorNumber ) ;
+			break ;
+	}
+}
+
+function kp(evt) {
+        if (evt.keyCode==46 || evt.keyCode==8 || evt.keyCode==37 || evt.keyCode==39 || evt.keyCode==189 ) return true;
+        if ( (evt.keyCode<48 || evt.keyCode>57) || evt.keyCode==189 ) return false;
+}
+
+function thumbHelp() {
+	var popup = window.open('', 'thumb_help', 'left=150,top=250,width=500,height=300,scrollbars=yes');
+	popup.document.write(
+		'<head>'+
+		'<title>Изменение размера &mdash; Помощь</title>'+
+		'<head>'+
+		'<body>'+
+		'<h2>Изменение размеров изображения</h2>'+
+		'<p>Вы можете сразу при загрузке изменить размер изображения.</p><p>Возможности:</p>'+
+		'<ol>'+
+		'<li>Если задать ширину и высоту, то изображение впишется в эти размеры, сохраняя пропорции.</li>'+
+		'<li>Если один из параметров установить в 0, то этот параметр установится в соответствии с пропорциями.</li>'+
+		'<li>Если хотя бы один параметр отрицательный, то из изображения вырежется кусок максимального размера, в центре изображения и уменьшенный до введенных размеров.</li>'+
+		'</ol>'+
+		'</body>'+
+		'</html>'
+	);
+	popup.focus();
+}
+
+window.onload = function()
+{
+	window.top.IsLoadedUpload = true ;
+}
+		</script>
+	</head>
+	<body>
+		<form id="frmUpload" action="" target="frmUploadWorker" method="post" enctype="multipart/form-data" onsubmit="return OnSubmit();">
+			<table class="fullHeight" cellspacing="0" cellpadding="0" width="100%" border="0">
+				<tr>
+					<td nowrap="nowrap">
+						<table cellspacing="0" cellpadding="0" width="100%" border="0" style="margin-top: 0px">
+							<tr>
+								<td width="100%">
+									<span id="eUploadMessage">Загрузить файл в текущую папку</span><br>
+									<input id="NewFile" name="NewFile" style="WIDTH: 100%" type="file"/></td>
+								<td nowrap>
+									<table id="thumb_box" cellspacing="0" cellpadding="0" border=0>
+										<tr>
+											<td nowrap align="right">
+									качество сжатия <input type="text" onKeyDown="return kp(event)" style="width: 30px" id="thumb_q" name="thumb_q" value="100">&nbsp;&nbsp;<br>
+											 &nbsp; ширина <input type="text" onKeyDown="return kp(event)" style="width: 30px" id="thumb_x" name="thumb_x" value="100">
+											, высота <input type="text" onKeyDown="return kp(event)" style="width: 30px" id="thumb_y" name="thumb_y" value="0"> &nbsp; </td>
+											<td nowrap><input type="checkbox" id="thumb" name="thumb"> <label for="thumb">изменить</label> <a href="javascript:thumbHelp()">?</a> &nbsp; </td>
+										</tr>
+
+
+
+									</table>
+								</td>
+								<td nowrap>&nbsp;<input id="btnUpload" type="submit" value="Загрузить"/></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

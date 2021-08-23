@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testimonials</title>
+     <!-- Bootstrap core CSS -->
+ <!--   <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-extend.css" rel="stylesheet">
+
+    <script src="/js/jquery_1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+-->
+ 
+    <style>
+        .hero{
+   /* background: #ff676d; */
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.hero h1{
+    text-align: center;
+    padding-top: 80px;
+    font-size: 40px;
+    color: #FF9900;
+}
+.slide-row{
+    display: flex;
+    width: 3200px;
+    transition: 0.5s;
+}
+.slide-col{
+    width: 900px;
+    height: 400px;
+    position: relative;
+}
+.user-img{
+    position: absolute;
+    top: 0%;
+    right: 0;
+    height: 100%;
+}
+.user-img img{
+    height: 100%;
+    border-radius: 10px;
+}
+.user-text{
+    background: #2d3a59;
+    width: 520px;
+    height: 270px;
+    position: absolute;
+    left: 0;
+    top: 20%;
+    tranform: translateY(-50%);
+    border-radius: 10px;
+    color: #d3d4d6;
+    padding: 45px;
+    box-sizing:border-box;
+    z-index: 2;
+}   
+.user-text p{
+    font-size: 18px;
+    line-height: 24px;
+}
+.user-text h3{
+    margin: 35px 0 5px;
+    color: #fff;
+}
+.container{
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.indicator{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -150px;
+}
+.btn{
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    margin: 4px;
+    border-radius: 15px;
+    background: #ff9900;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.active{
+   width: 45px;
+}   
+ .testimonial{
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+} 
+    </style>
+    <!-- Static navbar -->
+<!-- <nav class="navbar navbar-static-top navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-logo" href="/">Millionairescircle Club</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav nav-main navbar-customtext">
+                <li class="active"><a href="/index.php">Home</a></li>
+                <li><a href="/news.php">News</a></li>                <li><a href="/faq.php">FAQ</a></li>
+                <li class=""><a href="/ticket.php">Support</a></li>
+            </ul>
+
+            
+        </div><!--/.nav-collapse 
+    </div>
+</nav>  -->
+</head>
+<body>
+    <div class="hero">
+        <h1>WHAT CLIENTS SAY</h2>
+        
+<div class="container">
+    <div class="indicator">
+        <span class="btn active"></span>
+        <span class="btn"></span>
+        <span class="btn"></span>
+        <span class="btn"></span>
+    </div></br></br>
+    <div class="testimonial">
+        <div class="slide-row" id="slide">
+            <div class="slide-col">
+                 <div class="user-text">
+                      <p>Tell your testimony to the world</p>
+                       <h3>Name</h3>
+                        <p>Location.</p>
+                 </div>
+                  <div class="user-img">
+            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                </div>
+            </div>
+             <div class="slide-col">
+                 <div class="user-text">
+                      <p>Tell your testimony to the world</p>
+                       <h3>Name</h3>
+                        <p>Location.</p>
+                 </div>
+                  <div class="user-img">
+            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                </div>
+            </div>
+             <div class="slide-col">
+                 <div class="user-text">
+                      <p>Tell your testimony to the world</p>
+                       <h3>Name</h3>
+                        <p>Location.</p>
+                 </div>
+                  <div class="user-img">
+            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                </div>
+            </div>
+             <div class="slide-col">
+                 <div class="user-text">
+                      <p>Tell your testimony to the world</p>
+                       <h3>Name</h3>
+                        <p>Location</p>
+                 </div>
+                  <div class="user-img">
+            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+            </div>
+    </div>
+    </div>
+  </div>
+  <script src="http://millionairescircle.club/js/testi.js"></script>
+   </div>          
+</body>
+</html><!-- 
+<div class="mytesti" style="width: 100%; height: auto; "><img src="http://millionairescircle.club/uploads/image/foot.png" width="100%" height="400"></div> -->

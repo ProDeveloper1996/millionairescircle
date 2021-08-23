@@ -1,0 +1,7 @@
+<!-- BEGIN: MAIN -->
+
+{FILE {HEADER_TEMPLATE}}
+
+{FILE {FOOTER_TEMPLATE}}
+
+<!-- END: MAIN -->

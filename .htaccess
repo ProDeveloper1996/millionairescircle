@@ -1,0 +1,30 @@
+RewriteEngine on
+
+RewriteRule ^templates/.*$ - [L]
+#RewriteRule ^([^/.]*).php$ $1.php
+RewriteRule ^admin/.*$ - [L]
+RewriteRule ^notify/.*$ - [L]
+RewriteRule ^data/.*$ - [L]
+RewriteRule ^images/.*$ - [L]
+RewriteRule ^includes/.*$ - [L]
+RewriteRule ^member/.*$ - [L]
+RewriteRule ^install/.*$ - [L]
+RewriteRule ^js/.*$ - [L]
+RewriteRule ^fonts/.*$ - [L]
+RewriteRule ^css/.*$ - [L]
+RewriteRule ^img/.*$ - [L]
+RewriteRule ^mlm-Balvinder/.*$ - [L]
+RewriteRule ^uploads/.*$ - [L]
+
+RewriteRule ^([^/.]*)/(.*)  sites/$2
+
+#AddType application/x-httpd-php .php .html
+
+##AddHandler application/x-httpd-ea-php56 .php .php5 .phtml
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php56” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php56 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
